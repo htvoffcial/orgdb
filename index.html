@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -16,17 +15,40 @@
   <meta property="og:image" content="https://hmg-publisha.haruharutv.jp/">
   <title>Indeeecsa組織番号データベース検索</title>
 </head>
+
 <body>
   <topbar>
     <img src="https://indeeecsa-orgnization-search.netlify.app/service-logo.png" class="service-logo">
   </topbar>
   <maincontents>
-    
+
     <about>
-     
+      <div style="text-align: left;margin-left:20px;margin-right:20px;">
+        <div id="tabArea">
+
+          <input type="radio" name="tab" id="tab1" onclick="tabClick(1)" checked>
+          <label for="tab1">団体の名称などで探す</label>
+
+          <input type="radio" name="tab" id="tab2" onclick="tabClick(2)">
+          <label for="tab2">組織番号から探す</label>
+
+          <div class="tabBody">
+            <p>サンプル</p>
+            <p id="tabNo">タブ1</p>
+          </div>
+
+        </div>
+      </div>
+      <script>
+        function tabClick(argTabNo) {
+
+          document.getElementById("tabNo").innerHTML = 'タブ' + argTabNo;
+
+        }
+      </script>
     </about>
 
-  
+
     <footer style="display:block;text-align:center;padding:20px;background:#fcfcfc;color:#909090;margin:none;">
 
       <div id="linkbox">
@@ -44,6 +66,78 @@
   </maincontents>
 </body>
 <style>
+  /* --- タブ（ラジオボタン）のエリア ------------------------ */
+  #tabArea {
+    line-height: 1;
+    /* 1行の高さ          */
+    letter-spacing: 0;
+    /* 文字間             */
+    /* 文字位置は中央     */
+  }
+
+  /* --- ラジオボタン ---------------------------------------- */
+  #tabArea input[type="radio"] {
+    display: none;
+    /* ラジオボタン非表示 */
+  }
+
+  /* --- ラジオボタン直後のlabel ----------------------------- */
+  #tabArea input[type="radio"]+label {
+    display: inline-block;
+    position: relative;
+    padding: 6px 10px;
+    /* labelの余白 */
+    font-size: 12pt;
+    /* タブの文字サイズ   */
+    font-weight: bold;
+    /* タブは太文字       */
+    border: 3px solid #999;
+    /* 未選択タブのの枠線 */
+    border-bottom: none;
+    /* 下罫線は消す       */
+    border-radius: 5px 5px 0 0;
+    /* タブの上左右角丸   */
+    margin: 0 1px;
+    /* タブ間隔           */
+    background: #fff;
+    /* 未選択タブの背景色 */
+    color: #666;
+    /* 未選択タブの文字色 */
+  }
+
+  /* --- 選択されたラジオボタン直後のlabel ------------------- */
+  #tabArea input[type="radio"]:checked+label {
+    border-color: #4682B4;
+    /* 選択タブの枠線     */
+    color: #4682B4;
+    /* 選択タブの文字色   */
+    cursor: default;
+    /* デフォルトカーソル */
+    z-index: 2;
+    /* 重なりを最前面へ   */
+  }
+
+  /* --- 未選択ラジオボタン直後のlabelにマウスが乗った ------- */
+  #tabArea input[type="radio"]:not(:checked)+label:hover {
+    background: #b4cee2;
+    /* カーソルタブの背景 */
+    cursor: pointer;
+    /* リンクカーソル     */
+  }
+
+  /* --- タブ下の本体エリア ---------------------------------- */
+  .tabBody {
+    position: relative;
+    border: 3px solid #4682B4;
+    /* 本体の枠線         */
+    background: #fff;
+    /* 本体の背景色       */
+    margin-top: -3px;
+    /* タブと罫線分重ねる */
+    z-index: 1;
+    /* 未選択タブより全面 */
+  }
+
   .slick-prev:before,
   .slick-next:before {
     color: #000;
@@ -59,8 +153,7 @@
     z-index: 100;
   }
 
-  .slick-dots li.slick-active button:before
-  .slick-dots li button:before {
+  .slick-dots li.slick-active button:before .slick-dots li button:before {
     color: #fff;
   }
 
