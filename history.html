@@ -30,6 +30,9 @@
                 <h3>最新の情報</h3>
                 <div id="result"></div>
                 <hr>
+                <div id="lsta">
+
+                </div>
                 <script>
                     $.ajax({
                         type: "GET",
@@ -54,8 +57,11 @@
                                     item.region + "<br>最終更新日:" +
                                     item.lastupdate
                                 resultDiv.appendChild(listItem);
+                                document.title=item.meisho+"の情報 | Indeeecsa組織番号検索サイト";
+                                document.getElementById("titls").innerHTML=item.meisho+"の情報";
+                                document.getElementById("lsta").innerHTML="登録の変更/作成履歴"+item.history;
                             });
-                            document.title=data.meisho+"の情報 | Indeeecsa組織番号検索サイト";
+                           
                         }
                         
                         })
