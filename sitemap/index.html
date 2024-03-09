@@ -22,7 +22,7 @@
     <script>
     window.addEventListener('DOMContentLoaded', async () => {
       try {
-        const siteMapUrl = '/sitemap.xml'; // サイトマップのURLを指定してください
+        const siteMapUrl = 'sitemap.xml'; // サイトマップのURLを指定してください
         const response = await fetch(siteMapUrl);
         const xmlText = await response.text();
         const parser = new DOMParser();
