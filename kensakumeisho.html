@@ -30,12 +30,22 @@
                     $.ajax({
                         type: "GET",
                         url: "https://script.google.com/macros/s/AKfycbw7LGlAZx6yYTf37wRM7HoMRMayOalEQcb3razeqBhKAW18vBsPIwe3_eH7BlkeMs24/exec",
-                        data: { key:decodeURI(location.search.substr(5)) },
+                        data: { key: decodeURI(location.search.substr(5)) },
                         async: false
                     })
                         .done(function (data) {
                             console.log(data);
-
+                            var resultDiv = document.getElementById("result");
+                            jsonData.forEach(function (item) {
+                                var listItem = document.createElement("div");
+                                listItem.innerHTML = "<strong>組織ID:</strong> " + item.orgid + "<br>" +
+                                    "<strong>名称:</strong> " + item.meisho + "<br>" +
+                                    "<strong>名称カタカナ:</strong> " + item.meishokatakana + "<br>" +
+                                    "<strong>地域:</strong> " + item.region + "<br>" +
+                                    "<strong>最終更新日:</strong> " + item.lastupdate + "<br>" +
+                                    "<strong>履歴:</strong> " + item.history + "<br><br>";
+                                resultDiv.appendChild(listItem);
+                            });
                         })
                         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                             alert("読み込めませんでした", XMLHttpRequest, textStatus, errorThrown);
