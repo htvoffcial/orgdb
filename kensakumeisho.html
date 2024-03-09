@@ -34,7 +34,12 @@
                         async: false
                     })
                         .done(function (data) {
+                            var resultDiv = document.getElementById("result");
                             console.log(data);
+                            if(data.length === 0){
+                                resultDiv.innerHTML="一致する団体が見つかりませんでした。<br>もしかしたら、名称のみで都道府県を";
+                            }else{
+                        
                             var resultDiv = document.getElementById("result");
                             data.forEach(function (item) {
                                 var listItem = document.createElement("div");
@@ -46,6 +51,8 @@
                                     "<strong>履歴:</strong> " + item.history + "<br><br>";
                                 resultDiv.appendChild(listItem);
                             });
+                        }
+                        
                         })
                         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                             alert("読み込めませんでした", XMLHttpRequest, textStatus, errorThrown);
