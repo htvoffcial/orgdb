@@ -116,10 +116,7 @@
 
               function chsc() {
                 document.getElementById("shouws").innerHTML = "<p id='stas'>現在<b>" + document.getElementById("orgid").value.length + "</b>文字です</p>";
-                var chbs = value.replace(/[０-９]/g, function (s) {
-                  return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-                });
-                document.getElementById("orgid").value=chbs;
+            
                 if (document.getElementById("orgid").value.length == 13) {
                   document.getElementById("stas").style.color = "lightgreen";
                 } else {
