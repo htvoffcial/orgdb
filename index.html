@@ -30,11 +30,11 @@
             <button class="tab-button" onclick="openTab(event, 'tab2')" style="margin-left:10px;">組織番号で探す</button>
           </div>
           <div id="tab1" class="tab-content active">
-            <h3>団体の名称</h3>
+            <h3 style="color:rgb(162, 221, 241)">団体の名称</h3>
             <p>団体の名称で検索できます。複数表記がある場合も</p>
             <input>
           </div>
-          <div id="tab2" class="tab-content active">
+          <div id="tab2" class="tab-content">
             <h3>組織番号で探す</h3>
             <p></p>
             <input>
@@ -62,6 +62,11 @@
   </maincontents>
 </body>
 <style>
+  input{
+    padding:2px;
+    border:solid 3px #ccc;
+    border-radius: 5px;
+  }
 .tab-container {
     display: flex;
   }
