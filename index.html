@@ -114,10 +114,11 @@
               chsc();
               function chsc(){
                 document.getElementById("shouws").innerHTML="<p id='stas'>現在<b>"+document.getElementById("orgid").value.length+"</b>文字です</p>";
-                if(document.getElementById("orgid").value!=30){
-                  document.getElementById("stas").style.color="red";
-                }else{
+                if(document.getElementById("orgid").value.length==13){
                   document.getElementById("stas").style.color="lightgreen";
+                }else{
+                  
+                  document.getElementById("stas").style.color="red";
                 }
               }
             </script>
