@@ -1,0 +1,264 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Indeecsa Sitemaps</title>
+    <meta name="theme-color" content="#548c38">
+
+</head>
+<body>
+
+<topbar>
+<img src="./service-logo.png" class="haruharu-strmng-logo">
+</topbar>
+<maincontents>
+    <div style="text-align:left;">
+<about>
+    <h1>Site Map Analyzer</h1>
+    <ul id="siteMapList"></ul>
+    
+    <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const siteMapUrl = '/sitemap.xml'; // サイトマップのURLを指定してください
+        const response = await fetch(siteMapUrl);
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        const urlNodes = xmlDoc.getElementsByTagName('url');
+    
+        const siteMapList = document.getElementById('siteMapList');
+        for (let i = 0; i < urlNodes.length; i++) {
+          const locNode = urlNodes[i].getElementsByTagName('loc')[0];
+          const lastModNode = urlNodes[i].getElementsByTagName('lastmod')[0];
+          const priorityNode = urlNodes[i].getElementsByTagName('priority')[0];
+          const frequencyNode = urlNodes[i].getElementsByTagName('changefreq')[0];
+    
+          const listItem = document.createElement('li');
+          const anchor = document.createElement('a');
+          anchor.href = locNode.textContent;
+          anchor.textContent = locNode.textContent;
+          anchor.className = "afa";
+          listItem.appendChild(anchor);
+    
+          if (lastModNode) {
+            const lastModified = new Date(lastModNode.textContent).toLocaleString();
+            listItem.appendChild(document.createTextNode(' - Last Modified: ' + lastModified));
+          }
+          if (priorityNode) {
+            listItem.appendChild(document.createTextNode(' - Priority: ' + priorityNode.textContent));
+          }
+          if (frequencyNode) {
+            listItem.appendChild(document.createTextNode(' - Change Frequency: ' + frequencyNode.textContent));
+          }
+    
+          siteMapList.appendChild(listItem);
+        }
+      } catch (error) {
+        console.error('Error fetching or parsing site map:', error);
+      }
+    });
+    </script>
+
+</about>
+</div>
+<footer style="display:block;text-align:center;padding:20px;background:#fcfcfc;color:#909090;margin:none;">
+
+  <small>&copy; 2024 All right reserved, Haruharu Music Group,Haruharu Music Japan.</small>
+  </footer>
+</maincontents>
+<div style="text-align: center;"><div style="display: inline-block; position: relative; z-index: 9999;"><script type="text/javascript" charset="utf-8" src="//asumi.shinobi.jp/fire?f=434"></script></div></div></body>
+<style>
+    .afa{
+        color:#6cb149
+    }
+  artist-profile{
+    display:flex;
+    justify-content: center;
+  }
+  .album-icon{
+    margin-right:10px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+  }
+  .album-cover{
+    width:200px;
+    height:200px;
+    border-radius:16px;
+  }
+    .video-description {
+      text-align:left;
+    padding: 15px;
+  }
+  .video-title {
+    text-align:left;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .video-info {
+    text-align:left;
+    color: #555;
+  }
+  .imgb{
+    width:100%;
+  }
+  x-slide-box{
+    padding:10px;
+    overflow-x: scroll;
+    flex-shrink: 0;
+    display:flex;
+    
+  }
+  
+  #linkbox{
+    
+    font-size:14px;
+    color:#909090;
+    margin-top:20px;
+    margin-bottom:20px;
+  }
+  box{
+    width:250px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  box img {
+    width: 100%;
+    height: auto;
+  }
+h2{
+  background-image: linear-gradient(to right, #548c38, #6cb149);
+	background-repeat: no-repeat;
+	background-size: 100% 10%;
+	background-position: bottom;
+	transition: all 0.25s ease-in;
+  display:inline-block;
+}
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.gallery {
+  background: #EEE;
+}
+.gallery-cell img{
+  height: 100%;
+}
+.gallery-cell {
+  justify-content: center;
+  width: 66%;
+  height: 300px;
+  margin-right: 10px;
+}
+
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 300px;
+}
+
+.iiframe{
+width:20%;
+height:300px;
+resize: both;
+}
+
+read{
+background:crimson;
+padding:15px;
+color:#fff;
+border:solid 3px #fff;
+user-select: none;
+}
+maincontents{
+display: block;
+width:100%;
+z-index:10;
+margin-top:103px;
+}
+body,html{
+  font-family: Arial, sans-serif;
+margin:0px;
+}
+read{
+background:crimson;
+padding:15px;
+color:#fff;
+border:1px #fff solid 
+}
+topbar{
+z-index:88;
+color:#fff;
+/*text-align:center;*/
+width:100%;
+padding:12px;
+background:#fff;
+position:fixed;
+top:0px;left:0px;
+justify-content: center;
+}
+.haruharu-strmng-logo{
+    height:55px;
+    margin:10px;
+}
+about{
+display:block;
+margin:10px;
+
+}
+
+imbox{
+
+display:block;
+background:#000;
+width:100%;
+
+text-align:center;
+}
+menu1{
+cursor:pointer;
+float:right;
+
+}
+a{
+color:#fff;
+text-decoration:none;
+}
+a:focus{
+font-weight:bold;
+}
+box{
+display:inline-block;
+margin:0px 10px 0px 0px;
+}
+.topimage{
+text-align:center;
+width:50%;
+
+box-shadow: 10px 0px 320px 10px gray;
+}
+@media screen and (max-width: 600px) {
+.topimage{
+text-align:center;
+width:100%;
+box-shadow: 10px 0px 320px 10px gray;
+}
+.iiframe{
+width:70%;
+}
+}
+ 
+
+
+</style>
+</html>
