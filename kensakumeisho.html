@@ -27,6 +27,9 @@
             <div style="text-align: left;margin-left:20px;margin-right:20px;">
                 <div id="result"></div>
                 <script>
+                    if(decodeURI(location.search.substr(5))==""){
+                        location.href="/";
+                    }else{
                     $.ajax({
                         type: "GET",
                         url: "https://script.google.com/macros/s/AKfycbw7LGlAZx6yYTf37wRM7HoMRMayOalEQcb3razeqBhKAW18vBsPIwe3_eH7BlkeMs24/exec",
@@ -55,6 +58,7 @@
                         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                             alert("読み込めませんでした", XMLHttpRequest, textStatus, errorThrown);
                         });
+                    }
                 </script>
 
             </div>
