@@ -43,9 +43,9 @@
                             var resultDiv = document.getElementById("result");
                             data.forEach(function (item) {
                                 var listItem = document.createElement("div");
-                                listItem.innerHTML = "<a href='history.html?id="+item.orgid+"'><hr>組織番号:" + item.orgid + "<br>" +
-                                 item.meishokatakana + "<br>" +
-                                   item.meisho + "<br>" +
+                                listItem.innerHTML = "<a style='color:#000;' href='history.html?id="+item.orgid+"'><hr>組織番号:<span style='color:orange;font-size:18px;'>" + item.orgid + "</span><br>" +
+                                 item.meishokatakana + "<br><span style='font-size:21px;'>" +
+                                   item.meisho + "</span><br>" +
                                     item.region + "<br></a>" 
                                 resultDiv.appendChild(listItem);
                             });
