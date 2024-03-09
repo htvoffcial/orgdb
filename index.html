@@ -3,6 +3,7 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <meta name="google-site-verification" content="NGOM7ONHZi7WONhwlckYve1dBRqZKmK5GKSz0QLJXjY" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
@@ -24,11 +25,13 @@
 
     <about>
       <div style="text-align: left;margin-left:20px;margin-right:20px;">
+        このサイトでは、Indeeecsaが組織番号を割り当てた者の<br>1.団体の名称など<br>2.Indeeecsaが割り当てた組織番号<br>を公表しています。<br>また、開発者などに向けたAPIなども試験的に公開しております。
         <div id="tabArea">
           <div class="tab-container">
             <button class="tab-button active" onclick="openTab(event, 'tab1')">団体の名称などで探す</button>
             <button class="tab-button" onclick="openTab(event, 'tab2')" style="margin-left:10px;">組織番号で探す</button>
           </div>
+          
           <div id="tab1" class="tab-content active">
             <h3 style="color:rgb(162, 221, 241)">団体の名称</h3>
             <p>団体の名称で検索できます。複数表記がある場合は正式名称もしくはカタカナ表記でも検索できます</p>
@@ -103,9 +106,11 @@
           </div>
 
           <div id="tab2" class="tab-content">
-            <h3>組織番号で探す</h3>
+            <h3 style="">組織番号で探す</h3>
              <p>組織番号13桁を入力してください</p>
-            <input>
+            <input style="font-size: 30px;font-weight: bold;" placeholder="123456789123" maxlength="13"><sbmt onclick="sbmt1()">
+              検索
+            </sbmt>
           </div>
         </div>
       </div>
