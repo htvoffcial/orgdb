@@ -25,13 +25,11 @@
     <about>
       <div style="text-align: left;margin-left:20px;margin-right:20px;">
         <div id="tabArea">
-
-          <input type="radio" name="tab" id="tab1" onclick="tabClick(1)" checked>
-          <label for="tab1">団体の名称などで探す</label>
-
-          <input type="radio" name="tab" id="tab2" onclick="tabClick(2)">
-          <label for="tab2">組織番号から探す</label>
-
+          <div class="tab-container">
+            <button class="tab-button active" onclick="openTab(event, 'tab1')">団体の名称などで探す</button>
+            <button class="tab-button" onclick="openTab(event, 'tab2')">組織番号で探す</button>
+          </div>
+          
           <div id="tb1">
             <h3>団体の名称</h3>
             <p>団体の名称で検索できます。複数表記がある場合も</p>
