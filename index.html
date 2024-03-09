@@ -32,11 +32,11 @@
           <div id="tab1" class="tab-content active">
             <h3 style="color:rgb(162, 221, 241)">団体の名称</h3>
             <p>団体の名称で検索できます。複数表記がある場合は正式名称もしくはカタカナ表記でも検索できます</p>
-            <input>
+            <input id="meisho">
             <h3 style="color:rgb(162, 221, 241)">活動地域</h3>
             <p>都道府県などで検索できます。</p>
-            <select>
-              <option value>選択してください</option>
+            <select id="regsel">
+              <option value="no">選択してください</option>
               <option value="北海道">北海道</option>
               <option value="青森県">青森県</option>
               <option value="岩手県">岩手県</option>
@@ -89,9 +89,17 @@
             <details><summary>詳細な検索条件を開く</summary>
             登録終了も検索する<input type="checkbox" style="display: inline;">
             </details>
-            <sbmt>
+            <center>
+            <sbmt onclick="sbmt1()">
               検索
             </sbmt>
+            </center>
+            <script>
+              function sbmt1(){
+                location.href="search?key="+document.getElementById("meisho").value+"&region="+document.getElementById("regsel").value;
+              }
+            </script>
+
           </div>
 
           <div id="tab2" class="tab-content">
