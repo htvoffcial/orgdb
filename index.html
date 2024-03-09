@@ -102,6 +102,9 @@
               function sbmt1() {
                 location.href = "kensakumeisho.html?key=" + document.getElementById("meisho").value + document.getElementById("regsel").value;
               }
+              function sbmt2() {
+                location.href = "history.html?id=" + document.getElementById("orgid").value;
+              }
             </script>
 
           </div>
@@ -126,7 +129,7 @@
               }
             </script>
 
-            <sbmt onclick="sbmt1()">
+            <sbmt onclick="sbmt2()">
               検索
             </sbmt>
           </div>
