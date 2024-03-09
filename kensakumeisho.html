@@ -43,10 +43,10 @@
                             var resultDiv = document.getElementById("result");
                             data.forEach(function (item) {
                                 var listItem = document.createElement("div");
-                                listItem.innerHTML = "<hr>組織番号:" + item.orgid + "<br>" +
+                                listItem.innerHTML = "<a href='history.html?id="+item.orgid+"'><hr>組織番号:" + item.orgid + "<br>" +
                                  item.meishokatakana + "<br>" +
                                    item.meisho + "<br>" +
-                                    item.region + "<br>" 
+                                    item.region + "<br></a>" 
                                 resultDiv.appendChild(listItem);
                             });
                         }
