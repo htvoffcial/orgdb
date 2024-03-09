@@ -1,0 +1,40 @@
+<script>
+    // 12桁の乱数を生成する関数
+function generateRandomNumber() {
+    let randomNumber = '';
+    for (let i = 0; i < 12; i++) {
+        randomNumber += Math.floor(Math.random() * 10); // 0から9の乱数を生成
+    }
+    return randomNumber;
+}
+
+// パリティチェックを計算する関数
+function calculateCheckDigit(randomNumber) {
+    let evenParity = 0;
+    let oddParity = 0;
+
+    for (let i = 0; i < 12; i++) {
+        if (i % 2 === 0) {
+            evenParity += parseInt(randomNumber[i]);
+        } else {
+            oddParity += parseInt(randomNumber[i]);
+        }
+    }
+
+    let checkDigit = (evenParity + oddParity) % 10;
+    return checkDigit;
+}
+
+// 乱数を生成してチェックディジットを追加する関数
+function generateRandomNumberWithCheckDigit() {
+    let randomNumber = generateRandomNumber();
+    let checkDigit = calculateCheckDigit(randomNumber);
+    let randomNumberWithCheckDigit = randomNumber + checkDigit;
+    return randomNumberWithCheckDigit;
+}
+
+// 13桁の乱数を生成
+let randomWithCheckDigit = generateRandomNumberWithCheckDigit();
+console.log("生成された13桁の乱数:", randomWithCheckDigit);
+
+</script>
