@@ -25,6 +25,7 @@
 
         <about>
             <div style="text-align: left;margin-left:20px;margin-right:20px;">
+                <h2>検索結果一覧</h2>
                 <div id="result"></div>
                 <script>
                     $.ajax({
@@ -36,23 +37,33 @@
                         .done(function (data) {
                             var resultDiv = document.getElementById("result");
                             console.log(data);
-                            if(data.length === 0){
-                                resultDiv.innerHTML="一致する団体が見つかりませんでした。<hr>HINT ヒント<br>もしかしたら、名称のみで都道府県を指定しない。もしくはその逆でやってみてください。<br>読み方で検索する場合は完全にわからない場合、カタカナでわかる途中までを入力してみてください。";
-                            }else{
-                        
-                            var resultDiv = document.getElementById("result");
-                            data.forEach(function (item) {
-                                var listItem = document.createElement("div");
-                                listItem.innerHTML = "<strong>組織ID:</strong> " + item.orgid + "<br>" +
-                                    "<strong>名称:</strong> " + item.meisho + "<br>" +
-                                    "<strong>名称カタカナ:</strong> " + item.meishokatakana + "<br>" +
-                                    "<strong>地域:</strong> " + item.region + "<br>" +
-                                    "<strong>最終更新日:</strong> " + item.lastupdate + "<br>" +
-                                    "<strong>履歴:</strong> " + item.history + "<br><br>";
-                                resultDiv.appendChild(listItem);
-                            });
-                        }
-                        
+                            if (data.length === 0) {
+                                resultDiv.innerHTML = "一致する団体が見つかりませんでした。<hr>HINT ヒント<br>もしかしたら、名称のみで都道府県を指定しない。もしくはその逆でやってみてください。<br>読み方で検索する場合は完全にわからない場合、カタカナでわかる途中までを入力してみてください。";
+                            } else {
+
+                                var resultDiv = document.getElementById("result");
+                                var table = document.createElement("table");
+
+                                var headerRow = table.insertRow();
+                                for (var key in data[0]) {
+                                    var headerCell = document.createElement("th");
+                                    headerCell.textContent = key;
+                                    headerRow.appendChild(headerCell);
+                                }
+                                data.forEach(function (item) {
+                                    var row = table.insertRow();
+                                    for (var key in item) {
+                                        var cell = row.insertCell();
+                                        if (key === "meisho") {
+                                            cell.innerHTML = item[key] + "<ruby>" + item["meishokatakana"] + "<rp>(</rp><rt>" + item["meishokatakana"] + "</rt><rp>)</rp></ruby>";
+                                        } else {
+                                            cell.textContent = item[key];
+                                        }
+                                    }
+                                });
+                                resultDiv.appendChild(table);
+                            }
+
                         })
                         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                             alert("読み込めませんでした", XMLHttpRequest, textStatus, errorThrown);
