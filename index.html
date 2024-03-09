@@ -31,7 +31,7 @@
             <button class="tab-button active" onclick="openTab(event, 'tab1')">団体の名称などで探す</button>
             <button class="tab-button" onclick="openTab(event, 'tab2')" style="margin-left:10px;">組織番号で探す</button>
           </div>
-          
+
           <div id="tab1" class="tab-content active">
             <h3 style="color:rgb(162, 221, 241)">団体の名称</h3>
             <p>団体の名称で検索できます。複数表記がある場合は正式名称もしくはカタカナ表記でも検索できます</p>
@@ -87,19 +87,20 @@
               <option value="宮崎県">宮崎県</option>
               <option value="鹿児島県">鹿児島県</option>
               <option value="沖縄県">沖縄県</option>
-          </select>
-          <h3 style="color:rgb(162, 221, 241)">検索の条件設定</h3>
-            <details><summary>詳細な検索条件を開く</summary>
-            登録終了も検索する<input type="checkbox" style="display: inline;">
+            </select>
+            <h3 style="color:rgb(162, 221, 241)">検索の条件設定</h3>
+            <details>
+              <summary>詳細な検索条件を開く</summary>
+              登録終了も検索する<input type="checkbox" style="display: inline;">
             </details>
             <center>
-            <sbmt onclick="sbmt1()">
-              検索
-            </sbmt>
+              <sbmt onclick="sbmt1()">
+                検索
+              </sbmt>
             </center>
             <script>
-              function sbmt1(){
-                location.href="search?key="+document.getElementById("meisho").value+"&region="+document.getElementById("regsel").value;
+              function sbmt1() {
+                location.href = "search?key=" + document.getElementById("meisho").value + "&region=" + document.getElementById("regsel").value;
               }
             </script>
 
@@ -107,18 +108,23 @@
 
           <div id="tab2" class="tab-content">
             <h3 style="color:rgb(162, 221, 241)">組織番号で探す</h3>
-             <p>組織番号13桁を入力してください</p>
-            <input style="font-size: 30px;font-weight: bold;max-width: 100%;" placeholder="123456789123" maxlength="13" oninput="chsc()" id="orgid">
+            <p>組織番号13桁を入力してください</p>
+            <input style="font-size: 30px;font-weight: bold;max-width: 100%;" placeholder="123456789123" maxlength="13"
+              oninput="chsc()" id="orgid">
             <div id="shouws"></div>
             <script>
-              
-              function chsc(){
-                document.getElementById("shouws").innerHTML="<p id='stas'>現在<b>"+document.getElementById("orgid").value.length+"</b>文字です</p>";
-                if(document.getElementById("orgid").value.length==13){
-                  document.getElementById("stas").style.color="lightgreen";
-                }else{
-                  
-                  document.getElementById("stas").style.color="red";
+
+              function chsc() {
+                document.getElementById("shouws").innerHTML = "<p id='stas'>現在<b>" + document.getElementById("orgid").value.length + "</b>文字です</p>";
+                var chbs = value.replace(/[０-９]/g, function (s) {
+                  return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                });
+                document.getElementById("orgid").value=chbs;
+                if (document.getElementById("orgid").value.length == 13) {
+                  document.getElementById("stas").style.color = "lightgreen";
+                } else {
+
+                  document.getElementById("stas").style.color = "red";
                 }
               }
             </script>
@@ -131,7 +137,8 @@
       </div>
       <script src="https://hmg-publisha.haruharutv.jp/artist/a-script.js">
       </script>
-      <div style="display:block;margin:15px;border-bottom:solid lightblue 5px;border-top:solid lightblue 10px;border-radius:10px 10px 0px 0px;">
+      <div
+        style="display:block;margin:15px;border-bottom:solid lightblue 5px;border-top:solid lightblue 10px;border-radius:10px 10px 0px 0px;">
         <b style="display:block;margin:15px;border-bottom:solid lightblue 5px;">お知らせ</b>
         <hr>
         <p>新たなお知らせはありません</p>
@@ -140,12 +147,12 @@
       <div style="display:block;background: lightblue 10px;border-radius:10px;padding:10px;">
         <a href="about/">
           <div style="display:block;margin:15px;background-color:#fff;padding:10px;color:#000;border-radius:10px;">
-          Indeeecsa組織番号とは？
+            Indeeecsa組織番号とは？
           </div>
         </a>
         <a href="api/">
           <div style="display:block;margin:15px;background-color:#fff;padding:10px;color:#000;border-radius:10px;">
-          WebAPIの仕様などについて
+            WebAPIの仕様などについて
           </div>
         </a>
       </div>
@@ -167,26 +174,29 @@
   </maincontents>
 </body>
 <style>
-  select,input{
-    padding:7px;
-    display:block;
-    border:solid 2px #ccc;
+  select,
+  input {
+    padding: 7px;
+    display: block;
+    border: solid 2px #ccc;
     border-radius: 5px;
   }
-  sbmt{
-    padding:5px;
-    display:inline-block;
-    background:rgb(3, 212, 202);
+
+  sbmt {
+    padding: 5px;
+    display: inline-block;
+    background: rgb(3, 212, 202);
     border-radius: 5px;
-    margin:10px;
+    margin: 10px;
     text-align: center;
-    color:#fff;
-    font-size:21px;
+    color: #fff;
+    font-size: 21px;
   }
-.tab-container {
+
+  .tab-container {
     display: flex;
   }
-  
+
   .tab-button {
     border-radius: 8px 8px 0px 0px;
     padding: 10px 20px;
@@ -194,33 +204,33 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
-    border-top:solid 5px gray;
+    border-top: solid 5px gray;
     border-left: solid 5px gray;
-    border-right:solid 5px gray;
-    border-bottom:none;
+    border-right: solid 5px gray;
+    border-bottom: none;
   }
-  
+
   .tab-button.active {
     background-color: #fff;
-    border-top:solid 5px lightblue;
+    border-top: solid 5px lightblue;
     border-left: solid 5px lightblue;
-    border-right:solid 5px lightblue;
-    border-bottom:none;
+    border-right: solid 5px lightblue;
+    border-bottom: none;
   }
-  
+
   .tab-content {
     display: none;
   }
-  
+
   .tab-content.active {
     display: block;
-    border-bottom:solid 5px lightblue;
+    border-bottom: solid 5px lightblue;
     border-left: solid 5px lightblue;
-    border-right:solid 5px lightblue;
+    border-right: solid 5px lightblue;
     border-radius: 0px 0px 8px 8px;
-    padding:15px;
+    padding: 15px;
   }
-  
+
   li img {
     max-width: 100%;
     height: auto;
@@ -424,7 +434,7 @@
     color: #fff;
     /*text-align:center;*/
     width: 100%;
-    padding-top:-1px;
+    padding-top: -1px;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -488,11 +498,13 @@
       width: 100%;
       box-shadow: 10px 0px 320px 10px gray;
     }
-    sbmt{
 
-    display:block;
+    sbmt {
 
-  }
+      display: block;
+
+    }
+
     .iiframe {
       width: 70%;
     }
