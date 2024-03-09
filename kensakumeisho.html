@@ -36,7 +36,7 @@
                         .done(function (data) {
                             console.log(data);
                             var resultDiv = document.getElementById("result");
-                            jsonData.forEach(function (item) {
+                            data.forEach(function (item) {
                                 var listItem = document.createElement("div");
                                 listItem.innerHTML = "<strong>組織ID:</strong> " + item.orgid + "<br>" +
                                     "<strong>名称:</strong> " + item.meisho + "<br>" +
