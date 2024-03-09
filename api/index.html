@@ -4,9 +4,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>サイトマップ | Indeeecsa組織番号データベース検索</title>
+    <title>Developpers API | Indeeecsa組織番号データベース検索</title>
     <meta name="theme-color" content="#548c38">
-
+    <meta name="description"
+    content="照合システムや組み込みの際に開発者の方がご利用いただけるHTTP-APIのごあんないです。">
 </head>
 <body>
 
@@ -16,52 +17,12 @@
 <maincontents>
     <div style="text-align:left;">
 <about>
-    <h1>Site Map Analyzer</h1>
-    <ul id="siteMapList"></ul>
-    
-    <script>
-    window.addEventListener('DOMContentLoaded', async () => {
-      try {
-        const siteMapUrl = 'sitemap.xml'; // サイトマップのURLを指定してください
-        const response = await fetch(siteMapUrl);
-        const xmlText = await response.text();
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-        const urlNodes = xmlDoc.getElementsByTagName('url');
-    
-        const siteMapList = document.getElementById('siteMapList');
-        for (let i = 0; i < urlNodes.length; i++) {
-          const locNode = urlNodes[i].getElementsByTagName('loc')[0];
-          const lastModNode = urlNodes[i].getElementsByTagName('lastmod')[0];
-          const priorityNode = urlNodes[i].getElementsByTagName('priority')[0];
-          const frequencyNode = urlNodes[i].getElementsByTagName('changefreq')[0];
-    
-          const listItem = document.createElement('li');
-          const anchor = document.createElement('a');
-          anchor.href = locNode.textContent;
-          anchor.textContent = locNode.textContent;
-          anchor.className = "afa";
-          listItem.appendChild(anchor);
-    
-          if (lastModNode) {
-            const lastModified = new Date(lastModNode.textContent).toLocaleString();
-            listItem.appendChild(document.createTextNode(' - Last Modified: ' + lastModified));
-          }
-          if (priorityNode) {
-            listItem.appendChild(document.createTextNode(' - Priority: ' + priorityNode.textContent));
-          }
-          if (frequencyNode) {
-            listItem.appendChild(document.createTextNode(' - Change Frequency: ' + frequencyNode.textContent));
-          }
-    
-          siteMapList.appendChild(listItem);
-        }
-      } catch (error) {
-        console.error('Error fetching or parsing site map:', error);
-      }
-    });
-    </script>
-
+    <h1>Developpers API</h1>
+    <p>照合システムや組み込みの際に開発者の方がご利用いただけるHTTP-APIのごあんないです。</p>
+    <h3>ドキュメント</h3>
+   <p>認証トークンについてはHaruharu TV Developpersへの登録が必要です！</p>
+   <h2>リクエストの送信先</h2><br>
+   <p>へ、リクエストを送信してください。詳しい仕様は次のところでご確認ください。</p>
 </about>
 </div>
 <footer style="display:block;text-align:center;padding:20px;background:#fcfcfc;color:#909090;margin:none;">
