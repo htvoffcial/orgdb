@@ -111,6 +111,7 @@
             <input style="font-size: 30px;font-weight: bold;max-width: 100%;" placeholder="123456789123" maxlength="13" onkeypress="chsc()" id="orgid">
             <div id="shouws"></div>
             <script>
+              chsc();
               function chsc(){
                 document.getElementById("shouws").innerHTML="<p id='stas'>現在<b>"+document.getElementById("orgid").value.length+"</b>文字です</p>";
                 if(document.getElementById("orgid").value!=30){
