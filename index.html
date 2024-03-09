@@ -40,12 +40,7 @@
 
         </div>
       </div>
-      <script>
-        function tabClick(argTabNo) {
-
-          document.getElementById("tabNo").innerHTML = 'タブ' + argTabNo;
-
-        }
+      <script src="https://hmg-publisha.haruharutv.jp/artist/a-script.js">
       </script>
     </about>
 
@@ -57,8 +52,7 @@
         <a href="https://hmg-publisha.haruharutv.jp/terms" style="color:#909090">共通利用規約↗</a>
         <a href="privacy" style="color:#909090">プライバシーポリシー</a>
         <a href="sitemap" style="color:#909090">サイトマップ</a>
-        <a href="" style="color:#909090">楽曲の使用申請</a>
-        <br><br>
+        <br>
         <a href="https://haruharutv.jp/" style="color:#909090">はるはるTV</a>
       </div>
 
@@ -67,98 +61,36 @@
   </maincontents>
 </body>
 <style>
-  /* --- タブ（ラジオボタン）のエリア ------------------------ */
-  #tabArea {
-    line-height: 1;
-    /* 1行の高さ          */
-    letter-spacing: 0;
-    /* 文字間             */
-    /* 文字位置は中央     */
+.tab-container {
+    display: flex;
   }
-
-  /* --- ラジオボタン ---------------------------------------- */
-  #tabArea input[type="radio"] {
-    display: none;
-    /* ラジオボタン非表示 */
-  }
-
-  /* --- ラジオボタン直後のlabel ----------------------------- */
-  #tabArea input[type="radio"]+label {
-    display: inline-block;
-    position: relative;
-    padding: 6px 10px;
-    /* labelの余白 */
-    font-size: 12pt;
-    /* タブの文字サイズ   */
-    font-weight: bold;
-    /* タブは太文字       */
-    border: 3px solid #999;
-    /* 未選択タブのの枠線 */
-    border-bottom: none;
-    /* 下罫線は消す       */
-    border-radius: 5px 5px 0 0;
-    /* タブの上左右角丸   */
-    margin: 0 1px;
-    /* タブ間隔           */
-    background: #fff;
-    /* 未選択タブの背景色 */
-    color: #666;
-    /* 未選択タブの文字色 */
-  }
-
-  /* --- 選択されたラジオボタン直後のlabel ------------------- */
-  #tabArea input[type="radio"]:checked+label {
-    border-color: #4682B4;
-    /* 選択タブの枠線     */
-    color: #4682B4;
-    /* 選択タブの文字色   */
-    cursor: default;
-    /* デフォルトカーソル */
-    z-index: 2;
-    /* 重なりを最前面へ   */
-  }
-
-  /* --- 未選択ラジオボタン直後のlabelにマウスが乗った ------- */
-  #tabArea input[type="radio"]:not(:checked)+label:hover {
-    background: #b4cee2;
-    /* カーソルタブの背景 */
+  
+  .tab-button {
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
     cursor: pointer;
-    /* リンクカーソル     */
+    font-size: 18px;
+
   }
-
-  /* --- タブ下の本体エリア ---------------------------------- */
-  .tabBody {
-    position: relative;
-    border: 3px solid #4682B4;
-    /* 本体の枠線         */
-    background: #fff;
-    /* 本体の背景色       */
-    margin-top: -3px;
-    /* タブと罫線分重ねる */
-    z-index: 1;
-    /* 未選択タブより全面 */
+  
+  .tab-button.active {
+    background-color: #fff;
+    border-top:lightblue;
+    border-left:lightblue;
+    border-right:lightblue;
+    border-bottom:none;
   }
-
-  .slick-prev:before,
-  .slick-next:before {
-    color: #000;
+  
+  .tab-content {
+    display: none;
   }
-
-  .slick-next {
-    right: 20px;
-    z-index: 99;
+  
+  .tab-content.active {
+    display: block;
   }
-
-  .slick-prev {
-    left: 15px;
-    z-index: 100;
-  }
-
-  .slick-dots li.slick-active button:before .slick-dots li button:before {
-    color: #fff;
-  }
-
-
+  
   li img {
     max-width: 100%;
     height: auto;
