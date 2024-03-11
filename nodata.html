@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <meta name="google-site-verification" content="NGOM7ONHZi7WONhwlckYve1dBRqZKmK5GKSz0QLJXjY" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>組織番号のデータベース掲載の承諾のない企業について | Indeeecsa組織番号データベース</title>
+</head>
+
+<body>
+    <topbar>
+        <img src="https://indeeecsa-orgnization-search.netlify.app/service-logo.png" class="service-logo">
+    </topbar>
+    <maincontents>
+
+        <about>
+            <div style="text-align: left;margin-left:20px;margin-right:20px;">
+
+                <h1>組織番号のデータベース掲載の承諾のない企業について</h1>
+                <h2>
+                基本的な運用方針について
+                </h2>
+                <p>基本的な考え方として、登録組織は必ず組織番号を発行し、その内容のうちの一部である１．組織番号、２．</p>
+            </div>
+        </about>
+
+
+        <footer style="display:block;text-align:center;padding:20px;background:#fcfcfc;color:#909090;margin:none;">
+
+            <div id="linkbox">
+                <a href="about/" style="color:#909090">このサイトについて</a>
+                <a href="https://hmg-publisha.haruharutv.jp/terms" style="color:#909090">共通利用規約↗</a>
+                <a href="sitemap/" style="color:#909090">サイトマップ</a>
+                <a href="validating_check.html" style="color:#909090">組織番号検証</a>
+                <br>
+                <a href="https://haruharutv.jp/" style="color:#909090">はるはるTV</a>
+            </div>
+
+            <small>&copy; 2014 Indeeecsa</small>
+        </footer>
+    </maincontents>
+</body>
+<style>
+    select,
+    input {
+        padding: 7px;
+        display: block;
+        border: solid 2px #ccc;
+        border-radius: 5px;
+    }
+
+    sbmt {
+        padding: 5px;
+        display: inline-block;
+        background: rgb(3, 212, 202);
+        border-radius: 5px;
+        margin: 10px;
+        text-align: center;
+        color: #fff;
+        font-size: 21px;
+    }
+
+    .tab-container {
+        display: flex;
+    }
+
+    .tab-button {
+        border-radius: 8px 8px 0px 0px;
+        padding: 10px 20px;
+        background-color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        border-top: solid 5px gray;
+        border-left: solid 5px gray;
+        border-right: solid 5px gray;
+        border-bottom: none;
+    }
+
+    .tab-button.active {
+        background-color: #fff;
+        border-top: solid 5px lightblue;
+        border-left: solid 5px lightblue;
+        border-right: solid 5px lightblue;
+        border-bottom: none;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+        border-bottom: solid 5px lightblue;
+        border-left: solid 5px lightblue;
+        border-right: solid 5px lightblue;
+        border-radius: 0px 0px 8px 8px;
+        padding: 15px;
+    }
+
+    li img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #olink {
+        text-align: center;
+
+        padding: 15px;
+        display: block;
+        /* Flexboxを使って水平に並べる */
+        justify-content: center;
+        /* 中央寄せ */
+        align-items: center;
+        /* 垂直方向に中央寄せ */
+        /* バナーの高さ */
+        background-color: #f0f0f0;
+        /* バナーの背景色 */
+
+    }
+
+    #olink a {
+        margin: 10px;
+        /* リンクの間の余白 */
+    }
+
+    #olink img {
+        background-color: #ffffff;
+        height: auto;
+        width: 112px;
+        /* 画像の高さを50pxに固定 */
+        vertical-align: middle;
+        /* 画像を垂直方向に中央寄せ */
+    }
+
+    artist-profile {
+        display: flex;
+        justify-content: center;
+    }
+
+    .album-icon {
+        margin-right: 10px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+
+    .album-cover {
+        width: 200px;
+        height: 200px;
+        border-radius: 16px;
+    }
+
+    .video-description {
+        text-align: left;
+        padding: 15px;
+    }
+
+    .video-title {
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .video-info {
+        text-align: left;
+        color: #555;
+    }
+
+    .imgb {
+        width: 100%;
+    }
+
+    x-slide-box {
+        padding: 10px;
+        overflow-x: scroll;
+        flex-shrink: 0;
+        display: flex;
+
+    }
+
+    #linkbox {
+
+        font-size: 14px;
+        color: #909090;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    box {
+        width: 250px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        overflow: hidden;
+        height: auto;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    box img {
+        width: 100%;
+        height: auto;
+    }
+
+    box2 {
+        width: 413px;
+        flex-shrink: 0;
+        display: flex;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 100px;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    }
+
+    box2 img {
+        height: 100%;
+
+    }
+
+    br {
+        clear: both;
+        display: block;
+    }
+
+    h2 {
+        clear: both;
+        background-image: linear-gradient(to right, #548c38, #6cb149);
+        background-repeat: no-repeat;
+        background-size: 100% 10%;
+        background-position: bottom;
+        transition: all 0.25s ease-in;
+        display: inline-block;
+    }
+
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    /*
+.gallery {
+  background: #EEE;
+}
+.gallery-cell img{
+  height: 100%;
+}
+.gallery-cell {
+  justify-content: center;
+  width: 66%;
+  height: 300px;
+  margin-right: 10px;
+}
+
+.gallery-cell:before {
+  display: block;
+  text-align: center;
+  line-height: 300px;
+}
+*/
+    .iiframe {
+        width: 20%;
+        height: 300px;
+        resize: both;
+    }
+
+    read {
+        background: crimson;
+        padding: 15px;
+        color: #fff;
+        border: solid 3px #fff;
+        user-select: none;
+    }
+
+    maincontents {
+        display: block;
+        width: 100%;
+        z-index: 10;
+        margin-top: 110px;
+    }
+
+    body,
+    html {
+        font-family: Arial, sans-serif;
+        margin: 0px;
+    }
+
+    read {
+        background: crimson;
+        padding: 15px;
+        color: #fff;
+        border: 1px #fff solid
+    }
+
+    topbar {
+        z-index: 88;
+        color: #fff;
+        /*text-align:center;*/
+        width: 100%;
+        padding-top: -1px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background: #fff;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        justify-content: center;
+    }
+
+    .service-logo {
+        height: 75px;
+        margin: 10px;
+    }
+
+    about {
+        display: block;
+        margin: 10px;
+        text-align: center;
+    }
+
+    imbox {
+
+        display: block;
+        background: #000;
+        width: 100%;
+
+        text-align: center;
+    }
+
+    menu1 {
+        cursor: pointer;
+        float: right;
+
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    a:focus {
+        font-weight: bold;
+    }
+
+    box {
+        display: inline-block;
+        margin: 0px 10px 0px 0px;
+    }
+
+    .topimage {
+        text-align: center;
+        width: 50%;
+
+        box-shadow: 10px 0px 320px 10px gray;
+    }
+
+    @media screen and (max-width: 600px) {
+        .topimage {
+            text-align: center;
+            width: 100%;
+            box-shadow: 10px 0px 320px 10px gray;
+        }
+
+        sbmt {
+
+            display: block;
+
+        }
+
+        .iiframe {
+            width: 70%;
+        }
+    }
+</style>
+
+</html>
