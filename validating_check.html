@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,48 +10,12 @@
 <h2>組織番号検証</h2>
 
 <label for="randomNumberInput">生成された13桁の乱数を入力してください:</label>
-<input type="text" id="randomNumberInput">
+<input type="text" id="randomNumberInput"><br>
 <button onclick="validateCheckDigit()">検証する</button>
 <p id="validationResult"></p>
 
 <script>
-// チェックディジットを検証する関数
-function validateCheckDigit() {
-    let randomNumber = document.getElementById("randomNumberInput").value;
-    
-    if (randomNumber.length !== 13) {
-        document.getElementById("validationResult").innerText = "13桁の番号を入力してください。";
-        return;
-    }
-
-    let lastDigit = parseInt(randomNumber.charAt(12)); // 最後の桁（チェックディジット）
-    let truncatedNumber = randomNumber.substring(0, 12); // チェックディジットを除いた部分
-
-    let calculatedCheckDigit = calculateCheckDigit(truncatedNumber);
-
-    if (lastDigit === calculatedCheckDigit) {
-        document.getElementById("validationResult").innerText = "チェックディジットは正しいです。";
-    } else {
-        document.getElementById("validationResult").innerText = "チェックディジットが正しくありません。";
-    }
-}
-
-// パリティチェックを計算する関数
-function calculateCheckDigit(randomNumber) {
-    let evenParity = 0;
-    let oddParity = 0;
-
-    for (let i = 0; i < 12; i++) {
-        if (i % 2 === 0) {
-            evenParity += parseInt(randomNumber[i]);
-        } else {
-            oddParity += parseInt(randomNumber[i]);
-        }
-    }
-
-    let checkDigit = (evenParity + oddParity) % 10;
-    return checkDigit;
-}
+    function validateCheckDigit() { let randomNumber = document.getElementById("randomNumberInput").value; if (randomNumber.length !== 13) { document.getElementById("validationResult").innerText = "13桁の番号を入力してください。"; return; } let lastDigit = parseInt(randomNumber.charAt(12)); let truncatedNumber = randomNumber.substring(0, 12); let calculatedCheckDigit = calculateCheckDigit(truncatedNumber); if (lastDigit === calculatedCheckDigit) { document.getElementById("validationResult").innerText = "チェックディジットは正しいです。"; } else { document.getElementById("validationResult").innerText = "チェックディジットが正しくありません。"; } } function calculateCheckDigit(randomNumber) { let evenParity = 0; let oddParity = 0; for (let i = 0; i < 12; i++) { if (i % 2 === 0) { evenParity += parseInt(randomNumber[i]); } else { oddParity += parseInt(randomNumber[i]); } } let checkDigit = (evenParity + oddParity) % 10; return checkDigit; }
 </script>
 
 </body>
