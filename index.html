@@ -31,7 +31,7 @@
         <div id="tabArea">
           <div class="tab-container">
             <button class="tab-button active" onclick="openTab(event, 'tab1')">団体の名称などで探す</button>
-            <button class="tab-button" onclick="openTab(event, 'tab2')" style="margin-left:10px;">組織番号で探す</button>
+            <button class="tab-button" onclick="openTab(event, 'tab2')">組織番号で探す</button>
           </div>
 
           <div id="tab1" class="tab-content active">
@@ -212,12 +212,13 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
-    border-top: solid 5px gray;
-    border-left: solid 5px gray;
-    border-right: solid 5px gray;
+    border-top: solid 5px gainsboro;
+    border-left: solid 5px gainsboro;
+    border-right: solid 5px gainsboro;
     border-bottom: none;
     font-weight: bolder;
     width: 50%;
+    border-right: solid 5px lightblue;
   }
 
   .tab-button.active {
@@ -227,7 +228,11 @@
     border-right: solid 5px lightblue;
     border-bottom: none;
   }
-
+  .tab-button.active::before {
+    width:10px;
+    background-color: #fff;
+    border-bottom: solid 5px lightblue;
+  }
   .tab-content {
     display: none;
   }
