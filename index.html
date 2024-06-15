@@ -18,6 +18,7 @@
 </head>
 
 <body>
+  <div class="ctner">
   <topbar>
     <img src="https://indeeecsa-orgnization-search.netlify.app/service-logo.png" class="service-logo" alt="service-logo">
   </topbar>
@@ -178,6 +179,7 @@
       <small>&copy; 2014 Indeeecsa</small>
     </footer>
   </maincontents>
+  </div>
 </body>
 <style>
   select,
@@ -515,6 +517,23 @@
       width: 70%;
     }
   }
+  .cnter {
+        width: 850px;
+        margin: 0 auto;
+    }
+  @media screen and (max-width: 768px) {
+    .ctner {
+        width: 850px;
+        margin: 0 auto;
+        width:95%;
+    }
+    .nav-pc {
+        overflow-x: scroll;
+        width: calc(100% - 10px);
+        background-color: #f9f9f9;
+        padding: 5px;
+    }
+}
 </style>
 
 </html>
