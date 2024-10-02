@@ -37,7 +37,9 @@
                 <script>
                     $.ajax({
                         type: "GET",
-                        url: "https://script.google.com/macros/s/AKfycbzUs-PosIUTPJgFcEIlljbOZyba3bkUN7Ivv2nTzwK1WZgVpTK_2KfCSHLuQrxRe5bG/exec",
+                        //旧バックエンド
+                        //https://script.google.com/macros/s/AKfycbzUs-PosIUTPJgFcEIlljbOZyba3bkUN7Ivv2nTzwK1WZgVpTK_2KfCSHLuQrxRe5bG/exec
+                        url: "https://haruharutv.xsrv.jp/orgdb-relay.php",
                         data: { orgid: decodeURI(location.search.substr(4)) },
                         async: false
                     })
